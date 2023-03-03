@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import appStore from "../assets/svg/b.svg";
+import playStore from "../assets/svg/c.svg";
 
 type HeroProps = {
   bigText: string;
@@ -23,11 +26,30 @@ function Hero({ bigText, smallText, button, imgSvg }: HeroProps) {
                   {smallText}
                 </p>
 
-                {button && (
-                  <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
+                {button ? (
+                  <div className="hidden md:flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
                     <button className="w-full px-9 py-3 text-white font-bold capitalize transition-colors duration-300 transform  bg-primary rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                       {button}
                     </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-row items-center justify-between mt-6">
+                    <Link to={""}>
+                      <img src={playStore} alt="download" />
+                    </Link>
+                    <Link to={""} className="ml-2 ">
+                      <img src={appStore} alt="download" />
+                    </Link>
+                  </div>
+                )}
+                {button && (
+                  <div className="md:hidden flex flex-row items-center justify-evenly mt-6">
+                    <Link to={""}>
+                      <img src={playStore} alt="download" />
+                    </Link>
+                    <Link to={""}>
+                      <img src={appStore} alt="download" />
+                    </Link>
                   </div>
                 )}
               </div>
